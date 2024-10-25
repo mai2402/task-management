@@ -4,6 +4,7 @@ import { useState } from "react"
 import TaskList from "../components/TaskList"
 import Filter from "../ui/Filter"
 import SearchBar from "../ui/SearchBar"
+import { Link } from "react-router-dom"
 
 
 function Tasks() {
@@ -19,7 +20,12 @@ function Tasks() {
                 <Filter setPriorityFilter={setPriorityFilter} setStatusFilter={setStatusFilter} />
                 
                 {/* Pass searchQuery state and setter to SearchBar component */}
+                <div className="flex justify-end items-center gap-2">
                 <SearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
+                <Link  to="/tasks/new" className="bg-green text-white px-4 py-2 rounded-md hover:bg-blue-600">
+                  New Task
+                </Link>
+                </div>
             </div>
 
             {/* Pass search, priority, and status filters to TaskList component */}

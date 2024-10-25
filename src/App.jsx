@@ -4,6 +4,7 @@ import Home from "./pages/Home"
 import Tasks from './pages/Tasks';
 import Kanbanboard from './pages/Kanbanboard';
 import TaskForm from './components/TaskForm';
+import EditTask from './components/EditTask';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
                         <Route path="/Kanbanboard" element={<Kanbanboard/>} />
                             <Route path="/tasks" element={<Tasks />} />
                             <Route path='/tasks/new' element ={<TaskForm/>}/>
+                            <Route path="tasks/edit/:id" element={<EditTask/>}/>
   </Route>
   </Routes>
   </BrowserRouter>

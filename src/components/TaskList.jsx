@@ -1,12 +1,13 @@
 import { useSelector } from "react-redux"
 import TaskItem from "./TaskItem"
+import { selectAllTasks } from "../features/taskslice";
 
 
 
 function TaskList({searchQuery,priorityFilter,statusFilter}) {
-    const tasksSelector = useSelector((state)=>state.tasks.tasks)
+    const tasksSelector = useSelector(selectAllTasks)
     const tasks = tasksSelector.filter((task)=>{
-       const search= task.title.toLowerCase().trim().includes(searchQuery.toLowerCase().trim());
+       const search= task.title?.toLowerCase().trim().includes(searchQuery.toLowerCase().trim());
        // in case there is a filter to be applied
        if (!!priorityFilter || !!statusFilter) {
         const matchedPriorityFilter = priorityFilter && priorityFilter === task.priority;

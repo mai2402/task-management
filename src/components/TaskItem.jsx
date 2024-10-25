@@ -1,35 +1,28 @@
-import { FaEdit, FaTrash } from "react-icons/fa"
-import { useDispatch } from "react-redux"
-import { deleteTask } from "../features/taskslice"
+import { FaTrash, FaEdit } from 'react-icons/fa'; // Importing icons
+import { Link } from 'react-router-dom';
 
-
-
-function TaskItem({task}) {
-       const dispatch = useDispatch()
-
-     function handleDelete (){
-        confirm("Do you want to delete this task")
-        dispatch(deleteTask(task.id))
-     }
-
+function TaskItem({ task }) {
     return (
-        <li className="flex justify-between items-center p-4 mb-2 bg-white rounded shadow-md hover:shadow-lg transition-shadow">
-        <div>
-            <h3 className="font-semibold text-lg">{task.title}</h3>
-            <p className="text-gray-700">{task.description}</p>
-            <p className="text-sm text-gray-500">Priority: <span className="font-medium">{task.priority}</span></p>
-            <p className="text-sm text-gray-500">Status: <span className="font-medium">{task.state}</span></p>
-        </div>
-        <div className="flex space-x-2">
-            <button className="text-blue-500 hover:text-blue-700">
-                <FaEdit size={20} />
-            </button>
-            <button className="text-red-500 hover:text-red-700">
-                <FaTrash onClick={handleDelete}  size={20} />
-            </button>
-        </div>
-    </li>
-    )
+        <li className="flex items-start space-x-4 p-4 border-b border-gray-200">
+            <img 
+                src={task.image}
+                alt={task.title}
+                className="w-12 h-12 rounded-full object-cover" 
+            />
+            <div className="flex-1">
+                <h3 className="font-semibold text-lg">{task.title}</h3>
+                <p className="text-gray-700">{task.description}</p>
+                <p className="text-sm text-gray-500">Priority: {task.priority}</p>
+                <p className="text-sm text-gray-500">Status: {task.state}</p>
+            </div>
+            <div className="flex space-x-2">
+              <Link to={`/tasks/edit/${task.id}`} >
+               <FaEdit className="text-blue-500 cursor-pointer hover:text-blue-700" />
+              </Link> 
+                <FaTrash className="text-red-500 cursor-pointer hover:text-red-700" />
+            </div>
+        </li>
+    );
 }
 
-export default TaskItem
+export default TaskItem;

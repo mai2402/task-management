@@ -19,10 +19,6 @@ function Sidebar() {
                     <FaTasks className="mr-2" />
                     Tasks
                 </Link>
-                <Link to="/filters" className="flex items-center text-darkBlue hover:text-primary">
-                    <FaFilter className="mr-2" />
-                    Filters
-                </Link>
             </nav>
         </aside>
     );
