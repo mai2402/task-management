@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router-dom"
 import useEditTask from "../hooks/useEditTask"
 import { useSelector } from "react-redux"
 import { selectTaskById } from "../features/taskslice"
+import ErrorMessage from "../ui/ErrorMessage";
 
 
 
@@ -26,7 +27,7 @@ function EditTask() {
                 {...register("image")}
                 className="border border-gray-300 p-2 rounded w-full"
             />
-            <p>{errors.image?.message}</p>
+            <ErrorMessage message={errors.image?.message} />
         </div>
 
        
@@ -38,7 +39,7 @@ function EditTask() {
                 {...register("title")}
                 className="border border-gray-300 p-2 rounded w-full"
             />
-            <p className="text-rose-500 my-2">{errors.title?.message}</p>
+            <ErrorMessage message={errors.title?.message} />
         </div>
 
       
@@ -50,7 +51,7 @@ function EditTask() {
                 className="border border-gray-300 p-2 rounded w-full"
                 rows="4"
             />
-            <p className="text-rose-500 my-2">{errors.description?.message}</p>
+            <ErrorMessage message={errors.description?.message} />
         </div>
 
         <div className="mb-4">
@@ -64,7 +65,7 @@ function EditTask() {
                 <option value="medium">Medium</option>
                 <option value="high">High</option>
             </select>
-            <p className="text-rose-500 my-2">{errors.priority?.message}</p>
+            <ErrorMessage message={errors.priority?.message} />
         </div>
 
         <div className="mb-4">
@@ -78,7 +79,7 @@ function EditTask() {
                 <option value="doing">Doing</option>
                 <option value="done">Done</option>
             </select>
-            <p className="text-rose-500 my-2">{errors.state?.message}</p>
+            <ErrorMessage message={errors.state?.message} />
         </div>
 
         <button type="submit" className="bg-green text-white px-4 py-2 rounded hover:bg-blue-500">
