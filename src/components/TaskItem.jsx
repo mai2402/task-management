@@ -7,7 +7,8 @@ function TaskItem({ task }) {
     const dispatch = useDispatch()
 
     function handleDelete(){
-        confirm("do you want to delete this task ?!")
+       const isConfirmed=  confirm("do you want to delete this task ?!")
+       if (isConfirmed)
         dispatch(deleteTask(task.id))
     }
     return (
