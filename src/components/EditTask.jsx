@@ -1,16 +1,20 @@
 
 import { useNavigate, useParams } from "react-router-dom"
 import useEditTask from "../hooks/useEditTask"
+import { useSelector } from "react-redux"
+import { selectTaskById } from "../features/taskslice"
+
 
 
 function EditTask() {
     const {id} = useParams()
     const navigate = useNavigate()
+    const {title} = useSelector(selectTaskById(Number(id)))
     const {handleSubmit,register,errors,formSubmit} = useEditTask({id})
 
     return (
         <form onSubmit={handleSubmit((data)=>formSubmit(data,navigate))} className="bg-white p-6 rounded shadow-md" >
-        <h2 className="text-xl font-bold mb-4">Create New Task</h2>
+        <h2 className="text-xl font-bold mb-4"> Edit {title}</h2>
 
       
         <div className="mb-4">
@@ -32,10 +36,9 @@ function EditTask() {
                 type="text"
                 id="title"
                 {...register("title")}
-                required
                 className="border border-gray-300 p-2 rounded w-full"
             />
-            <p>{errors.title?.message}</p>
+            <p className="text-rose-500 my-2">{errors.title?.message}</p>
         </div>
 
       
@@ -44,11 +47,10 @@ function EditTask() {
             <textarea
                 id="description"
                 {...register("description")}
-                required
                 className="border border-gray-300 p-2 rounded w-full"
                 rows="4"
             />
-            <p>{errors.description?.message}</p>
+            <p className="text-rose-500 my-2">{errors.description?.message}</p>
         </div>
 
         <div className="mb-4">
@@ -62,7 +64,7 @@ function EditTask() {
                 <option value="medium">Medium</option>
                 <option value="high">High</option>
             </select>
-            <p>{errors.priority?.message}</p>
+            <p className="text-rose-500 my-2">{errors.priority?.message}</p>
         </div>
 
         <div className="mb-4">
@@ -76,7 +78,7 @@ function EditTask() {
                 <option value="doing">Doing</option>
                 <option value="done">Done</option>
             </select>
-            <p>{errors.state?.message}</p>
+            <p className="text-rose-500 my-2">{errors.state?.message}</p>
         </div>
 
         <button type="submit" className="bg-green text-white px-4 py-2 rounded hover:bg-blue-500">

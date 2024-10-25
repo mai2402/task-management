@@ -19,7 +19,7 @@ function TaskForm() {
         const taskData ={
             ...data,
             id : Date.now(),
-            image: URL.createObjectURL(data.image[0]),
+            image: URL.createObjectURL(data.image[0]) || "",
         }
              dispatch(addTask(taskData))
              navigate("/tasks")
@@ -40,7 +40,7 @@ function TaskForm() {
                     {...register("image")}
                     className="border border-gray-300 p-2 rounded w-full"
                 />
-                <p>{errors.image?.message}</p>
+                <p className="text-rose-500 my-2">{errors.image?.message}</p>
             </div>
 
            
@@ -50,10 +50,9 @@ function TaskForm() {
                     type="text"
                     id="title"
                     {...register("title")}
-                    required
                     className="border border-gray-300 p-2 rounded w-full"
                 />
-                <p>{errors.title?.message}</p>
+                <p className="text-rose-500 my-2">{errors.title?.message}</p>
             </div>
 
           
@@ -62,11 +61,10 @@ function TaskForm() {
                 <textarea
                     id="description"
                     {...register("description")}
-                    required
                     className="border border-gray-300 p-2 rounded w-full"
                     rows="4"
                 />
-                <p>{errors.description?.message}</p>
+                <p className="text-rose-500 my-2">{errors.description?.message}</p>
             </div>
 
             <div className="mb-4">
@@ -80,7 +78,7 @@ function TaskForm() {
                     <option value="medium">Medium</option>
                     <option value="high">High</option>
                 </select>
-                <p>{errors.priority?.message}</p>
+                <p className="text-rose-500 my-2">{errors.priority?.message}</p>
             </div>
 
             <div className="mb-4">
@@ -94,7 +92,7 @@ function TaskForm() {
                     <option value="doing">Doing</option>
                     <option value="done">Done</option>
                 </select>
-                <p>{errors.state?.message}</p>
+                <p className="text-rose-500 my-2">{errors.state?.message}</p>
             </div>
 
             <button type="submit" className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-500">
