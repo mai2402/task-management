@@ -12,9 +12,9 @@ function Filter({setStatusFilter,setPriorityFilter}) {
             <select className="border border-mediumGray p-2 rounded-md"
                       onChange={(e)=>setPriorityFilter(e.target.value)}>
                 <option value="">All Priorities</option>
-                <option value="Low">Priority: Low</option>
-                <option value="Medium">Priority: Medium</option>
-                <option value="High">Priority: High</option>
+                <option value="low">Priority: Low</option>
+                <option value="medium">Priority: Medium</option>
+                <option value="high">Priority: High</option>
             </select>
         </div>
     )

@@ -1,7 +1,10 @@
+
 import { useDispatch, useSelector } from "react-redux"
 import { editTask, selectTaskById } from "../features/taskslice"
 import { useForm } from "react-hook-form"
 import { useEffect } from "react"
+import { yupResolver } from "@hookform/resolvers/yup";
+import taskYupValidation from "../helpers/taskYupValidation"
 
 
 function useEditTask({id}) {
@@ -16,7 +19,9 @@ function useEditTask({id}) {
         description: task?.description || "",
         priority: task?.priority || "",
         state: task?.state || "",
-    }})
+    },
+    resolver : yupResolver(taskYupValidation())
+})
 
        useEffect(()=>{
           if(task){

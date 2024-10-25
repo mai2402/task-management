@@ -6,6 +6,7 @@ import { selectAllTasks } from "../features/taskslice";
 
 function TaskList({searchQuery,priorityFilter,statusFilter}) {
     const tasksSelector = useSelector(selectAllTasks)
+    
     const tasks = tasksSelector.filter((task)=>{
        const search= task.title?.toLowerCase().trim().includes(searchQuery.toLowerCase().trim());
        // in case there is a filter to be applied

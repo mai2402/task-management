@@ -1,7 +1,15 @@
 import { FaTrash, FaEdit } from 'react-icons/fa'; // Importing icons
 import { Link } from 'react-router-dom';
+import { deleteTask } from '../features/taskslice';
+import { useDispatch } from 'react-redux';
 
 function TaskItem({ task }) {
+    const dispatch = useDispatch()
+
+    function handleDelete(){
+        confirm("do you want to delete this task ?!")
+        dispatch(deleteTask(task.id))
+    }
     return (
         <li className="flex items-start space-x-4 p-4 border-b border-gray-200">
             <img 
@@ -19,7 +27,9 @@ function TaskItem({ task }) {
               <Link to={`/tasks/edit/${task.id}`} >
                <FaEdit className="text-blue-500 cursor-pointer hover:text-blue-700" />
               </Link> 
-                <FaTrash className="text-red-500 cursor-pointer hover:text-red-700" />
+              <button onClick={handleDelete}>
+                 <FaTrash className="text-red-500 cursor-pointer hover:text-red-700" />
+              </button>
             </div>
         </li>
     );

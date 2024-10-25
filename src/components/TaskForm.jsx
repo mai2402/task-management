@@ -2,12 +2,16 @@ import { useForm } from "react-hook-form";
 import { addTask } from "../features/taskslice";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { yupResolver } from "@hookform/resolvers/yup";
+import taskYupValidation from "../helpers/taskYupValidation";
 
 
 
 
 function TaskForm() {
-   const {register,handleSubmit,formState:{errors,isLoading}}= useForm()
+   const {register,handleSubmit,formState:{errors,isLoading}}= useForm({
+    resolver : yupResolver(taskYupValidation())
+   })
    const dispatch = useDispatch()
    const navigate = useNavigate()
 
