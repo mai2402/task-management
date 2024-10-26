@@ -1,6 +1,6 @@
 
 import { useSelector } from "react-redux";
-import { selectAllTasks } from "../features/taskSlice"
+import { selectAllTasks } from "../features/taskSlice";
 import { getLoggedInUser } from "../features/userSlice";
 import { ROLE_CONSTANTS } from "../constants/roleConstants";
 

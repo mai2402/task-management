@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import { addTask } from "../features/taskslice";
+import { addTask } from "../features/taskSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { yupResolver } from "@hookform/resolvers/yup";
