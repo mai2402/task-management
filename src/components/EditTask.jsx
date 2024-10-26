@@ -2,7 +2,7 @@
 import { useNavigate, useParams } from "react-router-dom"
 import useEditTask from "../hooks/useEditTask"
 import { useSelector } from "react-redux"
-import { selectTaskById } from "../features/taskslice"
+import { selectTaskById } from "../features/taskSlice"
 import ErrorMessage from "../ui/ErrorMessage";
 
 

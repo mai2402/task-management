@@ -3,13 +3,10 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState ={
     tasks:[
-     { id: 1, title: 'Task 1', description: 'Description for Task 1', priority: 'high', state: 'todo' },
-     { id: 2, title: 'Task 2', description: 'Description for Task 2', priority: 'medium', state: 'doing' },
-     { id: 3, title: 'Task 3', description: 'Description for Task 3', priority: 'low', state: 'done'},
+     { id: 1, title: 'Task 1', description: 'Description for Task 1', priority: 'high', state: 'todo', userId: '123' },
+     { id: 2, title: 'Task 2', description: 'Description for Task 2', priority: 'medium', state: 'doing', userId: '123' },
+     { id: 3, title: 'Task 3', description: 'Description for Task 3', priority: 'low', state: 'done', userId: '234'},
 ],
-
-    loading: "false"
-
 }
 
 const taskSlice = createSlice({
@@ -17,7 +14,11 @@ const taskSlice = createSlice({
      name:"tasks",
      initialState,
      reducers:{
-        addTask(state, action){
+          setTasks(state,action){
+              const {userId,tasks} = action.payload;
+              state.tasksByUser[userId]=  tasks;
+          },
+          addTask(state, action){
                  state.tasks.push(action.payload)
         },
         deleteTask(state,action){
