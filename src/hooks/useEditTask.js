@@ -1,6 +1,6 @@
 
 import { useDispatch, useSelector } from "react-redux"
-import { editTask, selectTaskById } from "../features/taskslice"
+import { editTask, selectTaskById } from "../features/taskSlice"
 import { useForm } from "react-hook-form"
 import { useEffect } from "react"
 import { yupResolver } from "@hookform/resolvers/yup";
