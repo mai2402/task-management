@@ -2,19 +2,13 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
     users: [
-        {
-            userID: '123',
-            password: "test123",
-            username: 'mai',
-           
-        },
-        {
-            userID: '3123',
-            password: "test123",
-            username: 'mohamed',
-         
-        }
+        { userID: '123', password: "test123", username: 'mai' },
+        { userID: '3123', password: "test123", username: 'mohamed' },
+        { userID: '4567', password: "test123", username: 'sara' },
+        { userID: '8910', password: "test123", username: 'ali' },
+        { userID: '1112', password: "test123", username: 'lina' }
     ],
+    
     isAuthenticated: false,
     loggedInUser: null,
     error: null,

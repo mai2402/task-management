@@ -11,13 +11,9 @@ function Sidebar() {
                     <HiHomeModern className="mr-2" />
                     Home
                 </Link>
-                <Link to="/Kanbanboard" className="flex items-center text-darkBlue hover:text-primary">
-                    <FaTachometerAlt className="mr-2" />
-                    Kanbanboard
-                </Link>
                 <Link to="/tasks" className="flex items-center text-darkBlue hover:text-primary">
                     <FaTasks className="mr-2" />
-                    Tasks
+                    My Tasks
                 </Link>
             </nav>
         </aside>
