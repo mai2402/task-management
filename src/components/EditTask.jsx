@@ -2,8 +2,9 @@
 import { useNavigate, useParams } from "react-router-dom"
 import useEditTask from "../hooks/useEditTask"
 import { useSelector } from "react-redux"
-import { selectTaskById } from "../features/taskSlice"
+import { getEmployeeRole, selectTaskById } from "../features/taskSlice";
 import ErrorMessage from "../ui/ErrorMessage";
+import { getLoggedInUser } from "../features/userSlice";
 
 
 
@@ -11,7 +12,9 @@ function EditTask() {
     const {id} = useParams()
     const navigate = useNavigate()
     const {title} = useSelector(selectTaskById(Number(id)))
-    const {handleSubmit,register,errors,formSubmit} = useEditTask({id})
+    const loggedInUser = useSelector(getLoggedInUser);
+    const isEmployeeRole = useSelector(getEmployeeRole(loggedInUser.userID, Number(id))) 
+    const {handleSubmit,register,errors,formSubmit} = useEditTask({id});
 
     return (
         <form onSubmit={handleSubmit((data)=>formSubmit(data,navigate))} className="bg-white p-6 rounded shadow-md" >
@@ -26,6 +29,7 @@ function EditTask() {
                 accept="image/*"
                 {...register("image")}
                 className="border border-gray-300 p-2 rounded w-full"
+                disabled={isEmployeeRole}
             />
             <ErrorMessage message={errors.image?.message} />
         </div>
@@ -38,6 +42,7 @@ function EditTask() {
                 id="title"
                 {...register("title")}
                 className="border border-gray-300 p-2 rounded w-full"
+                disabled={isEmployeeRole}
             />
             <ErrorMessage message={errors.title?.message} />
         </div>
@@ -50,6 +55,7 @@ function EditTask() {
                 {...register("description")}
                 className="border border-gray-300 p-2 rounded w-full"
                 rows="4"
+                disabled={isEmployeeRole}
             />
             <ErrorMessage message={errors.description?.message} />
         </div>
@@ -60,6 +66,7 @@ function EditTask() {
                 id="priority"
                 {...register("priority")}
                 className="border border-gray-300 p-2 rounded w-full"
+                disabled={isEmployeeRole}
             >
                 <option value="low">Low</option>
                 <option value="medium">Medium</option>

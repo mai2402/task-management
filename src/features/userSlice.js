@@ -6,11 +6,13 @@ const initialState = {
             userID: '123',
             password: "test123",
             username: 'mai',
+           
         },
         {
-            userID: '234',
+            userID: '3123',
             password: "test123",
-            username: 'mohamed'
+            username: 'mohamed',
+         
         }
     ],
     isAuthenticated: false,
@@ -33,17 +35,15 @@ const userSlice = createSlice({
             } else {
                 state.loggedInUser = null;
                 state.isAuthenticated = false;
-                state.error = "Invalid username or password"; // Update error message
+                state.error = "Invalid username or password"; 
             }
         },
         logout(state) {
-            state.loggedInUser = null; // Clear logged-in user
-            state.isAuthenticated = false; // Set authentication to false
-            state.error = null; // Clear any error
-        }
+            state.loggedInUser = null;
+            state.isAuthenticated = false; 
+            state.error = null; 
     }
-});
-
+}});
 
 export const getLoggedInUser = state => state.userSlice.loggedInUser; 
 export const getUsers = state => state.userSlice.users; 

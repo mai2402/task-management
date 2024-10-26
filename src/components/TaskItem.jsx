@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom';
 import { deleteTask } from '../features/taskslice';
 import { useDispatch } from 'react-redux';
 
-function TaskItem({ task }) {
-    const dispatch = useDispatch()
 
+function TaskItem({ task}) {
+    const dispatch = useDispatch()
     function handleDelete(){
        const isConfirmed=  confirm("do you want to delete this task ?!")
        if (isConfirmed)
@@ -24,14 +24,20 @@ function TaskItem({ task }) {
                 <p className="text-sm text-gray-500">Priority: {task.priority}</p>
                 <p className="text-sm text-gray-500">Status: {task.state}</p>
             </div>
-            <div className="flex space-x-2">
+            {task.role === "taskowner" ?
+            ( <div className="flex space-x-2">
               <Link to={`/tasks/edit/${task.id}`} >
                <FaEdit className="text-blue-500 cursor-pointer hover:text-blue-700" />
               </Link> 
               <button onClick={handleDelete}>
                  <FaTrash className="text-red-500 cursor-pointer hover:text-red-700" />
               </button>
-            </div>
+            </div>): (<div className="flex space-x-2">
+                <Link to={`/tasks/edit/${task.id}`} >
+                <FaEdit className="text-blue-500 cursor-pointer hover:text-blue-700"/>
+                </Link>
+                        
+            </div>) }
         </li>
     );
 }

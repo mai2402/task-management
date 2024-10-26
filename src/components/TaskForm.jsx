@@ -1,25 +1,28 @@
 import { useForm } from "react-hook-form";
 import { addTask } from "../features/taskslice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { yupResolver } from "@hookform/resolvers/yup";
 import taskYupValidation from "../helpers/taskYupValidation";
 import ErrorMessage from "../ui/ErrorMessage";
+import { getLoggedInUser } from "../features/userSlice";
 
 
 
 function TaskForm() {
-   const {register,handleSubmit,formState:{errors,isLoading}}= useForm({
+    const loggedInUser = useSelector(getLoggedInUser)
+   const {register,handleSubmit,formState:{errors}}= useForm({
     resolver : yupResolver(taskYupValidation())
    })
    const dispatch = useDispatch()
    const navigate = useNavigate()
-
+  console.log(loggedInUser.userID,"bsdsdv")
    function formSubmit (data){
         const taskData ={
             ...data,
             id : Date.now(),
             image: URL.createObjectURL(data.image[0]) || "",
+            ownerId:loggedInUser.userID,
         }
              dispatch(addTask(taskData))
              navigate("/tasks")
