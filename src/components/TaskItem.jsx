@@ -1,6 +1,6 @@
-import { FaTrash, FaEdit } from 'react-icons/fa'; // Importing icons
+import { FaTrash, FaEdit } from 'react-icons/fa'; 
 import { Link } from 'react-router-dom';
-import { deleteTask } from '../features/taskslice';
+import { deleteTask } from '../features/taskSlice';
 import { useDispatch } from 'react-redux';
 
 
